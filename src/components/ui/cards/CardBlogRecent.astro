@@ -6,6 +6,7 @@ import type { CollectionEntry } from "astro:content";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 
 const { blogEntry, recentBlogLocale = "" } = Astro.props;
+const imageDirectory = 'images/blog';
 
 interface Props {
   blogEntry: CollectionEntry<"blog">;
@@ -27,7 +28,7 @@ interface Props {
       
       <img
         class="absolute start-0 top-0 size-full rounded-xl object-cover transition duration-500 group-hover:scale-105"
-        src=`../src/assets/images/blog/${blogEntry.frontmatter.image.url}`
+        src=`${imageDirectory}/${blogEntry.frontmatter.image.url}`
         alt={blogEntry.frontmatter.image.alt}
         draggable={"false"}
         loading={"eager"}
