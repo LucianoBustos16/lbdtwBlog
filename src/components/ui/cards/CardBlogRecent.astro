@@ -5,8 +5,8 @@ import type { CollectionEntry } from "astro:content";
 // import AvatarBlogLarge from "@components/ui/avatars/AvatarBlogLarge.astro";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 
-const { blogEntry, recentBlogLocale = "" } = Astro.props;
-const imageDirectory = 'images/blog';
+const { blogEntry = "" } = Astro.props;
+const imageDirectory = '../images/blog';
 
 interface Props {
   blogEntry: CollectionEntry<"blog">;
