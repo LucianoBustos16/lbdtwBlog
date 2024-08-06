@@ -9,70 +9,54 @@ import BrandLogo from "@components/BrandLogo.astro";
 
 
 // Define the variables that will be used in this component
-const crafted: string = "Crafted by";
+const crafted: string = "Created with lots of ❤️ y 🍻️ by";
 ---
 
-<footer class="w-full bg-neutral-300 dark:bg-neutral-900">
-    <div
-    class="mx-auto w-full max-w-[85rem] px-4 py-10 sm:px-6 lg:px-16 lg:pt-20 2xl:max-w-screen-2xl"
-    >
-    <div class="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
-        <div class="col-span-full lg:col-span-1">
-        <!-- Brand Logo -->
-        <BrandLogo class="h-auto w-20" />
-      </div>
-      
-      
-
-      <div class="col-span-2">
-
-      </div>
+<footer class="w-full bg-neutral-300 dark:bg-neutral-900 py-8">
+  <div class="flex flex-col items-center justify-between sm:flex-row sm:justify-around">
+    <div class="flex flex-col items-center sm:mr-4">
+      <BrandLogo class="h-auto w-16" />
+      <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">
+        © <span id="current-year"></span> LBDTw. {crafted}
+        <a
+          class="rounded-lg font-medium underline underline-offset-2 outline-none ring-zinc-500 transition duration-300 hover:text-neutral-700 hover:decoration-dashed focus:outline-none focus-visible:ring dark:ring-zinc-200 dark:hover:text-sky-600"
+          href="https://twitter.com/lucianobustos16"
+          target="_blank"
+          rel="noopener noreferrer"
+        >luchito</a
+        >.
+      </p>
     </div>
-
-    <div
-      class="mt-9 grid gap-y-2 sm:mt-12 sm:flex sm:items-center sm:justify-between sm:gap-y-0"
-    >
-      <div class="flex items-center justify-between">
-        <p class="text-sm text-neutral-600 dark:text-neutral-400">
-          © <span id="current-year"></span> LBDTw. {crafted}
-          <a
-            class="rounded-lg font-medium underline underline-offset-2 outline-none ring-zinc-500 transition duration-300 hover:text-neutral-700 hover:decoration-dashed focus:outline-none focus-visible:ring dark:ring-zinc-200 dark:hover:text-sky-600"
-            href="https://twitter.com/lucianobustos16"
-            target="_blank"
-            rel="noopener noreferrer">luchito</a
-          >.
-        </p>
-      </div>
-
-      <!-- Social Brands -->
-      <div>
-
-        <FooterSocialLink url={strings.socialLinks.x}
-          ><Icon name="xFooter" />
-          </FooterSocialLink>
-
-          <FooterSocialLink url={strings.socialLinks.instagram}
-          ><Icon name="instagramFooter" />
-        </FooterSocialLink>
-
-        <FooterSocialLink url={strings.socialLinks.discord}
-          ><Icon name="discordFooter" />
-        </FooterSocialLink>
-
-        <FooterSocialLink url={strings.socialLinks.twitch}
-          ><Icon name="twitchFooter" />
-        </FooterSocialLink>
-
-
-
-        <FooterSocialLink url={strings.socialLinks.youtube}
-          ><Icon name="youtubeFooter" />
-        </FooterSocialLink>
-
-        <FooterSocialLink url={strings.socialLinks.facebook}
-        ><Icon name="facebookFooter" />
+  
+    <div class="flex items-center justify-end space-x-4 sm:mt-4">
+      <FooterSocialLink url={strings.socialLinks.x}>
+        <Icon name="xFooter" />
       </FooterSocialLink>
-      </div>
+  
+      <FooterSocialLink url={strings.socialLinks.instagram}>
+        <Icon name="instagramFooter" />
+      </FooterSocialLink>
+  
+      <FooterSocialLink url={strings.socialLinks.discord}
+            ><Icon name="discordFooter" />
+          </FooterSocialLink>
+  
+          <FooterSocialLink url={strings.socialLinks.twitch}
+            ><Icon name="twitchFooter" />
+          </FooterSocialLink>
+  
+  
+  
+          <FooterSocialLink url={strings.socialLinks.youtube}
+            ><Icon name="youtubeFooter" />
+          </FooterSocialLink>
+  
+          <FooterSocialLink url={strings.socialLinks.facebook}
+          ><Icon name="facebookFooter" />
+        </FooterSocialLink>
+    </div>
+  </div>
+  
     </div>
 
     <script>
