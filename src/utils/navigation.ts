@@ -27,11 +27,12 @@ const navBarLinks = [
   ];
   // An object of links for social icons
   const socialLinks = {
-    facebook: "https://www.facebook.com/",
-    x: "https://twitter.com/",
-    github: "https://github.com/mearashadowfax/ScrewFast",
-    google: "https://www.google.com/",
-    slack: "https://slack.com/",
+    facebook: "https://www.facebook.com/LBDTW/",
+    x: "https://twitter.com/_lbdtw_",
+    discord: "https://discord.com/invite/7EcJkeFMgc",
+    twitch: "https://www.twitch.tv/lbdtwok",
+    instagram: "https://www.instagram.com/lbdtw/",
+    youtube: "https://www.youtube.com/user/LBDTW",
   };
   
   export default {
