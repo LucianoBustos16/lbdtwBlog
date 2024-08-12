@@ -1,12 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting';
+import HeroSection from '../components/sections/landing/HeroSection.astro';
+
 
 const pageTitle = "Página de inicio";
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <h2 class="text-red-600">Mi impresionante subtítulo del blog</h2>
 
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
-
+  
+  <HeroSection
+    title=`Somos hinchas de  <span
+        class="text-sky-500 dark:text-sky-400">Belgrano</span>`
+    subTitle="Políticamente Incorrectos"
+    primaryBtn="Start Exploring"
+    primaryBtnURL="/products"
+    secondaryBtn="Contact Sales Team"
+    secondaryBtnURL="/contact"
+    withReview={true}
+    rating=`<span class="font-bold">4.8</span> / 5`
+    alt="Stack of ScrewFast product boxes containing assorted hardware tools"
+  />
 </BaseLayout>
