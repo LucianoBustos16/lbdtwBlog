@@ -3,6 +3,7 @@ import FooterSection from '@/components/sections/navbar&footer/FooterSection.ast
 import Header from '../components/sections/navbar&footer/Header.astro';
 // import Footer from '../components/Footer.astro';
 // import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 const { pageTitle } = Astro.props;
 
 ---
@@ -26,6 +27,7 @@ const { pageTitle } = Astro.props;
 		</script>
 
 
+<ViewTransitions />
   </head>
   <body class="bg-neutral-200 selection:bg-primary selection:text-neutral-200 dark:bg-neutral-800">
     <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
