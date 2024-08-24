@@ -1,7 +1,7 @@
 // An array of links for navigation bar
 const navBarLinks = [
     { name: "Inicio", url: "/", icon: "home", },
-    { name: "Blog", url: "/blog", icon: "groups", },
+    { name: "Blog", url: "/blog", icon: "noticias", },
     { name: "Estadisticas", url: "/tags", icon: "frame", },
     {name: "Live", url: "/about", icon: "tools",}
   ];
