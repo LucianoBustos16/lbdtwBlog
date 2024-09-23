@@ -1,5 +1,13 @@
 ---
 import Icon from "@/components/ui/icons/Icon.astro";
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale'; 
+
+const response = await fetch(`https://api.lbdtwplus.com.ar/scheduleLPF`)
+const schedule = await response.json()
+
+const teamId = 'Belgrano'
+
 
 // Define props from Astro
 const { title, subTitle } = Astro.props;
@@ -9,7 +17,6 @@ interface Props {
   title: string;
   subTitle?: string;
 }
-
 ---
 <section
   class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
@@ -31,37 +38,59 @@ interface Props {
   </div>
 
 
+
+
 <!-- main Atropos container (required), add your custom class here -->
 <div class="atropos my-atropos block w-full h-full">
     <!-- scale container (required) -->
     <div class="atropos-scale flex items-center justify-center max-w-[668px] mx-auto m-16 flex-0">
-      <!-- rotate container (required) -->
-      <div class="atropos-rotate relative z-[1000] w-full h-auto mx-auto md:aspect-[2/1]">
+		<!-- rotate container (required) -->
+		<div class="atropos-rotate relative z-[1000] w-full h-auto mx-auto md:aspect-[2/1]">
         <!-- inner container (required) -->
         <div class="atropos-inner">
             <section class="p-8 sm:mt-32 md:my-20 bg-[#098DD9] rounded-2xl overflow-hidden relative flex items-center justify-between">
+				{
+					schedule
+				  .filter(fecha => fecha.matches.some(match => (match.teams[0].id === teamId || match.teams[1].id === teamId) && !match.score.includes('-')))
+				  .slice(0, 1)
+				  .map((fecha) => (
+					
+					<div class='w-full my-8 flex items-center justify-between'>
+
+					  {fecha.matches
+						.filter(match => (match.teams[0].id === teamId || match.teams[1].id === teamId) && !match.score.includes('-'))
+						.map((match) => (
+						<div class="flex flex-col gap-4 text-white">
+									<h4 class="font-extrabold text-lg md:text-2xl">{match.teams[0].name}<span class="font-normal" > vs </span>{match.teams[1].name}</h4>
+									<div class="flex gap-2">
+										<Icon icon="calendario" size="24" />
+										<span>{format(new Date(match.timestamp), "EEE dd/M", { locale: es })}</span>
+										{console.log(match.timestamp)}
+									</div>
+				
+									<div class="flex gap-2">
+										<Icon icon="clock" size="24" />
+										<span>{match.hourMatch} h</span>
+									</div>
+						</div>
+
+										<div class="flex -space-x-6 rtl:space-x-reverse">
+											<img data-atropos-offset="4.5" class="w-16 md:w-24 md:h-24" src=`https://api.lbdtwplus.com.ar/static/logos/${match.teams[0].id}.svg` alt=`Escudo de ${match.teams[0].name}.svg`>
+											<img data-atropos-offset="16.5"class="w-16 md:w-24 md:h-24" src=`https://api.lbdtwplus.com.ar/static/logos/${match.teams[1].id}.svg` alt=`Escudo de ${match.teams[1].name}.svg`>
+										</div> 
+
+								
+						  
+						))}
+					</div>
+					
+				  ))
+				  }
+
                 
 
-                <div class="flex flex-col gap-4 text-white">
-                    <h4 class="font-extrabold text-lg md:text-2xl">Belgrano<span class="font-normal" > vs </span>Gimnasia (LP)</h4>
-                    <div class="flex gap-2">
-                        <Icon icon="calendario" size="24" />
-                        <span>26 Ago • 18:30 hs.</span>
-                    </div>
-
-                    <div class="flex gap-2">
-                        <Icon icon="trofeo" size="24" />
-                        <span>Liga profesional</span>
-                    </div>
-                </div>
-
-                <div class="flex -space-x-4 rtl:space-x-reverse">
-                    <img class="w-16 md:w-32" src="https://api.lbdtwplus.com.ar/static/logos/Belgrano.svg" alt="">
-                    <img class="w-16 md:w-32" src="https://api.lbdtwplus.com.ar/static/logos/Gimnasia.svg" alt="">
-                </div>
-
-                <div class="absolute z-0 opacity-10 right-0 w-56 md:w-96 flex center">
-                    <img src="/public/images/logos/logo-LPF-white.svg" alt="">
+                <div class="absolute opacity-10 right-0 w-56 md:w-96 flex center">
+                    <img data-atropos-offset="-4.5" src="/images/logos/logo-LPF-white.svg" alt="Logo de La Liga Profesional de fútbol">
                 </div>
             
 
