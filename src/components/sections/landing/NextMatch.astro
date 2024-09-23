@@ -55,14 +55,15 @@ interface Props {
 				  .slice(0, 1)
 				  .map((fecha) => (
 					
-					<div class='w-full my-8 flex items-center justify-between'>
+					<div class='w-full flex flex-col text-white'>
 
 					  {fecha.matches
 						.filter(match => (match.teams[0].id === teamId || match.teams[1].id === teamId) && !match.score.includes('-'))
 						.map((match) => (
-						<div class="flex flex-col gap-4 text-white">
-									<h4 class="font-extrabold text-lg md:text-2xl">{match.teams[0].name}<span class="font-normal" > vs </span>{match.teams[1].name}</h4>
-									<div class="flex gap-2">
+								<h4 class="font-extrabold text-lg md:text-2xl">{match.teams[0].name}<span class="font-normal" > vs </span>{match.teams[1].name}</h4>
+						<div class="flex items-center justify-between gap-4 ">
+							<div class="">
+								<div class="flex gap-2 mb-4">
 										<Icon icon="calendario" size="24" />
 										<span>{format(new Date(match.timestamp), "EEE dd/M", { locale: es })}</span>
 									</div>
@@ -71,12 +72,14 @@ interface Props {
 										<Icon icon="clock" size="24" />
 										<span>{match.hourMatch} h</span>
 									</div>
+							</div>
+									
+									<div class="flex -space-x-6 rtl:space-x-reverse">
+										<img data-atropos-offset="4.5" class="w-16 md:w-24 md:h-24" src=`https://api.lbdtwplus.com.ar/static/logos/${match.teams[0].id}.svg` alt=`Escudo de ${match.teams[0].name}.svg`>
+										<img data-atropos-offset="16.5"class="w-16 md:w-24 md:h-24" src=`https://api.lbdtwplus.com.ar/static/logos/${match.teams[1].id}.svg` alt=`Escudo de ${match.teams[1].name}.svg`>
+									</div>
 						</div>
 
-										<div class="flex -space-x-6 rtl:space-x-reverse">
-											<img data-atropos-offset="4.5" class="w-16 md:w-24 md:h-24" src=`https://api.lbdtwplus.com.ar/static/logos/${match.teams[0].id}.svg` alt=`Escudo de ${match.teams[0].name}.svg`>
-											<img data-atropos-offset="16.5"class="w-16 md:w-24 md:h-24" src=`https://api.lbdtwplus.com.ar/static/logos/${match.teams[1].id}.svg` alt=`Escudo de ${match.teams[1].name}.svg`>
-										</div>
 						))}
 					</div>
 					
